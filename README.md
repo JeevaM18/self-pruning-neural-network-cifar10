@@ -114,6 +114,71 @@ uvicorn api.app:app --reload
 ```bash
 streamlit run ui/app.py
 ```
+# 🏗️ Network Architecture
+
+```
+Input Image (32×32×3)
+        │
+        ▼  flatten
+  [3072-dim vector]
+        │
+        ▼
+┌───────────────────────────────┐
+│ PrunableLinear(3072 → 512)    │  ← 1,572,864 gates
+│ BatchNorm1d + ReLU            │
+│ Dropout(0.3)                  │
+└───────────────────────────────┘
+        │
+        ▼
+┌───────────────────────────────┐
+│ PrunableLinear(512 → 256)     │  ← 131,072 gates
+│ BatchNorm1d + ReLU            │
+│ Dropout(0.3)                  │
+└───────────────────────────────┘
+        │
+        ▼
+┌───────────────────────────────┐
+│ PrunableLinear(256 → 10)      │  ← 2,560 gates
+└───────────────────────────────┘
+        │
+        ▼
+  Class Logits (10)
+```
+
+### 🔢 Total Learnable Gates
+
+```
+Layer 1: 3072 × 512 = 1,572,864
+Layer 2: 512 × 256 =   131,072
+Layer 3: 256 × 10  =     2,560
+--------------------------------
+Total Gates ≈ 1,706,496
+```
+
+---
+
+### 🧠 Key Idea
+
+Each layer uses:
+
+```
+Effective Weight = Weight × Gate
+```
+
+- Gates are **learnable parameters**
+- L1 regularization pushes gates → 0
+- This enables **automatic pruning during training**
+
+---
+
+### ⚙️ Components Used
+
+- PrunableLinear (custom layer)
+- Batch Normalization (stability)
+- ReLU activation (non-linearity)
+- Dropout (regularization)
+
+---
 
 # 📊 Results
 
