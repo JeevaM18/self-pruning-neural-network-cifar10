@@ -56,40 +56,64 @@ This results in automatic pruning.
 Loaded using torchvision.
 
 ---
-
 # 🏗️ Project Structure
 
+```bash
 self-pruning-neural-network-cifar10/
 │
-├── models/
-├── training/
-├── api/
-├── ui/
-├── utils/
-├── config/
-├── outputs/
-├── assets/
-├── main.py
-├── requirements.txt
-└── README.md
+├── models/                  # Model architecture
+│   ├── prunable_linear.py
+│   └── network.py
+│
+├── training/                # Training pipeline
+│   ├── train.py
+│   ├── evaluate.py
+│   └── metrics.py
+│
+├── api/                     # FastAPI backend
+│   └── app.py
+│
+├── ui/                      # Streamlit frontend
+│   └── app.py
+│
+├── utils/                   # Utilities
+│   ├── logger.py
+│   └── config_loader.py
+│
+├── config/                  # Configurations
+│   └── config.yaml
+│
+├── data/                    # Dataset (auto-downloaded)
+│   └── CIFAR-10 files
+│
+├── outputs/                 # Models + logs
+│   ├── logs/
+│   │   └── training.log
+│   └── model_lambda_*.pth
+│
+├── assets/                  # Screenshots (README)
+│   └── A1.png
+│
+├── main.py                  # Entry point
+├── requirements.txt         # Dependencies
+└── README.md                # Documentation
+```
+## ▶️ How to Run
 
----
-
-# ⚙️ How to Run
-
-## 1. Train Model
-
+### 1️⃣ Train the model
+```bash
 python main.py
+```
 
-## 2. Run API
-
+### 2️⃣ Run API (backend)
+```bash
 uvicorn api.app:app --reload
+```
 
-## 3. Run UI
-
+### 3️⃣ Run UI (frontend)
+```bash
 streamlit run ui/app.py
-
----
+```
 
 # 📊 Results
 
