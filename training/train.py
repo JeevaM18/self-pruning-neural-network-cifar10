@@ -66,7 +66,7 @@ def train_model(lambda_val):
             ce_loss = F.cross_entropy(outputs, labels)
             sp_loss = sparsity_loss(model)
 
-            loss = ce_loss + lambda_val * (sp_loss / 10000)
+            loss = ce_loss + lambda_val * (sp_loss / 500)
 
             loss.backward()
             optimizer.step()
