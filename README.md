@@ -184,9 +184,9 @@ Effective Weight = Weight × Gate
 
 | Lambda | Accuracy | Sparsity |
 |--------|----------|----------|
-| 0.001 | ~56% | Low |
-| 0.01  | ~57% | Medium |
-| 0.1   | ~57% | High |
+| 0.001 | ~56% | 3.5% |
+| 0.01  | ~57% | 14.3% |
+| 0.1   | ~57% | 42.1% |
 
 ---
 # 🧠 Why L1 Regularization Works
