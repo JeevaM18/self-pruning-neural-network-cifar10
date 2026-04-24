@@ -120,9 +120,9 @@ Improved model stability
 
 | Lambda | Accuracy (%) | Sparsity (%) |
 |--------|-------------|-------------|
-| 0.001  | 56.92       | (observed)  |
-| 0.01   | 57.49       | (observed)  |
-| 0.1    | 57.71       | (observed)  |
+| 0.001  | 56.92       |     Low     |
+| 0.01   | 57.49       |    Medium   |
+| 0.1    | 57.71       |     High    |
 
 ---
 
