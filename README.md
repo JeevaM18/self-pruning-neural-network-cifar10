@@ -124,7 +124,22 @@ streamlit run ui/app.py
 | 0.1   | ~57% | High |
 
 ---
+# 🧠 Why L1 Regularization Works
 
+L1 regularization encourages sparsity because:
+
+- It creates sharp corners in optimization space
+- Solutions tend to land exactly at zero
+- This leads to weight elimination
+
+L2 regularization spreads weights instead of eliminating them.
+---
+# ❌ What Didn’t Work
+
+- Very high λ (0.5) caused accuracy collapse
+- Model over-pruned and lost important features
+- Shows importance of balancing sparsity vs performance
+---
 # 🧠 Key Insights
 
 - Increasing λ increases sparsity but reduces accuracy
